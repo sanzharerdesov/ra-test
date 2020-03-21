@@ -1,9 +1,18 @@
 import React from 'react';
-import { List, Datagrid, TextField } from 'react-admin';
+import { Filter, ReferenceInput, SelectInput, TextInput, List, Datagrid, TextField } from 'react-admin';
 import CompanyUrlField from './CompanyUrlField';
 
+const AdminFilter = (props) => (
+    <Filter {...props}>
+        <TextInput label="Search" source="q" alwaysOn />
+        <ReferenceInput label="User" source="id" reference="users" allowEmpty>
+            <SelectInput optionText="name" />
+        </ReferenceInput>
+    </Filter>
+);
+
 export const AdminList = (props) => (
-    <List {...props}>
+    <List filters = {<AdminFilter />} {...props}>
         <Datagrid>
             <TextField source="name" />
             <TextField source="username" />
