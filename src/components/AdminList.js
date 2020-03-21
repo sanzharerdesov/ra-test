@@ -1,6 +1,7 @@
 import React from 'react';
 import { Filter, ReferenceInput, SelectInput, TextInput, List, Datagrid, TextField } from 'react-admin';
 import CompanyUrlField from './CompanyUrlField';
+import { LocationPanel } from './LocationPanel';
 
 const AdminFilter = (props) => (
     <Filter {...props}>
@@ -13,7 +14,7 @@ const AdminFilter = (props) => (
 
 export const AdminList = (props) => (
     <List filters = {<AdminFilter />} {...props}>
-        <Datagrid>
+        <Datagrid expand={<LocationPanel />}>
             <TextField source="name" />
             <TextField source="username" />
             <TextField source="email" />
